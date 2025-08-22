@@ -22,7 +22,7 @@ public class mySqlUserRepo implements UserRepository {
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public List<User> getAllUsers() throws DatabaseErrorException {
+    public List<User> getAllUsers() {
         String sql = "SELECT * FROM users";
 
         try {
@@ -33,7 +33,7 @@ public class mySqlUserRepo implements UserRepository {
     }
 
     @Override
-    public Optional<User> getUserById(Integer userId) throws DatabaseErrorException {
+    public Optional<User> getUserById(Integer userId) {
         String sql = "SELECT * FROM users WHERE user_id = ?";
 
         try {

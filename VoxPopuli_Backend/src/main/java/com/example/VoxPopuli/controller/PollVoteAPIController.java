@@ -4,6 +4,7 @@ import com.example.VoxPopuli.model.*;
 import com.example.VoxPopuli.repository.PollOptionRepository;
 import com.example.VoxPopuli.repository.PollRepository;
 import com.example.VoxPopuli.repository.PollVoteRepository;
+import com.example.VoxPopuli.services.PollVoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,7 @@ import java.util.Optional;
 public class PollVoteAPIController {
 
     @Autowired
-    PollVoteRepository pollVoteRepo;
+    PollVoteService pollVoteRepo;
 
     @GetMapping("/{id}")
     public ResponseEntity<List<PollOptionVoteResult>> getPollResults(@PathVariable Integer id) {

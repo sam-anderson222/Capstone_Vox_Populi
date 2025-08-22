@@ -3,6 +3,7 @@ package com.example.VoxPopuli.controller;
 import com.example.VoxPopuli.model.User;
 import com.example.VoxPopuli.model.UserLogInSignUpAttempt;
 import com.example.VoxPopuli.repository.UserRepository;
+import com.example.VoxPopuli.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +17,7 @@ import java.util.Optional;
 public class UserAPIController {
 
     @Autowired
-    UserRepository userRepo;
+    UserService userRepo;
 
     @GetMapping
     public ResponseEntity<List<User>> getAllUsers() {
