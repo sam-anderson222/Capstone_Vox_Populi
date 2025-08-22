@@ -13,6 +13,7 @@ function SignUp() {
     const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
     const maxUsernamePasswordLen = 30;
+    const minUsernamePasswordLen = 4;
 
     // 'e' is is the automatically create event handler object.
     const handleSubmit = async (e) => {
@@ -24,6 +25,11 @@ function SignUp() {
         };
 
         try {
+            if (username.length < minUsernamePasswordLen || userPassword.length < minUsernamePasswordLen) {
+                setError(new Error("Invalid Username / Password Length!"))
+                return;
+            }
+
             await attemptSignUp(userSignUpData);
             setShowSuccessMessage(true);
         } catch (err) {
