@@ -1,0 +1,49 @@
+.view-poll-button {
+    padding: 0.3rem 5rem;
+    font-size: 1.1rem;
+}
+
+.poll-option-button {
+    padding: 1rem 2rem;
+    font-size: 1.25rem;
+    background-color: white;
+    color: black;
+}
+
+.selected-poll-option-button {
+    color:rgb(0, 0, 0) !important;
+    background-color: rgb(212, 252, 152) !important;
+}
+
+.poll-vote-submit-button {
+    padding: 1rem 2rem;
+    font-size: 1.50rem;
+}
+
+.home-screen-text {
+    font-size: 1.7rem;
+    text-align: center;
+}
+
+.home-screen-subtext {
+    font-size: 1.4rem;
+    line-height: 3rem;
+    text-align: center;
+}
+
+
+.home-link-button {
+    border: 0.08em;
+    border-color: black;
+    border-style: solid;
+    padding: 2rem 5rem;
+    width: 80%;
+    font-size: 1.50rem;
+}
+
+/* Make vote button full width on smaller screens */
+@media (max-width: 767px) {
+   .fluid-vote-button {
+        width: 100%;
+    } 
+}
