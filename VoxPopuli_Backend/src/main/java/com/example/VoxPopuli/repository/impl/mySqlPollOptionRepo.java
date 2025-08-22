@@ -40,6 +40,9 @@ public class mySqlPollOptionRepo implements PollOptionRepository {
 
         try {
             List<PollOption> options = jdbcTemplate.query(sql, PollOptionMapper.pollOptionRowMapper(), pollId);
+            if (options.size() < 2) {
+                throw new DatabaseErrorException();
+            }
             return options;
         } catch (Exception ex) {
             throw new DatabaseErrorException();

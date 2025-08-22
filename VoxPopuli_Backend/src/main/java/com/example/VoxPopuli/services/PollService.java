@@ -35,7 +35,7 @@ public class PollService {
     }
 
     public boolean savePoll(Poll poll) {
-        if (poll.getOptions().size() < 2) {
+        if (poll.getOptions().size() < 2 || poll.getPollTitle().isEmpty()) {
             return false;
         }
 

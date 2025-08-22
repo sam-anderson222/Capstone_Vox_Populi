@@ -62,6 +62,10 @@ function ViewPoll() {
 
     const handleSubmit = async (e) => {
             e.preventDefault()
+
+            if (!selectedOption) {
+                return;
+            }
             
             const formData = new FormData(e.target);
             const pollVote = {
