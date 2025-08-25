@@ -4,15 +4,19 @@ import * as d3 from "d3";
 const PieChart = ({ data, size = 300 }) => {
   const ref = useRef();
 
-  // Only render the label if it takes up more than 10% of pie 
+  // Only render the label if it takes up more than 12% of pie 
   function doShowOptionLabel(d) {
         let totalNumberOfVotes = 0
         data.map((d) => {
             totalNumberOfVotes += d.optionVotes
         })
 
-        if (d.optionVotes / totalNumberOfVotes <= 0.10) {
+        let arcPercent = d.optionVotes / totalNumberOfVotes;
+
+        if (arcPercent <= 0.10) {
             return "";
+        } else if (arcPercent <= 0.18 && d.optionName.length > 8){
+          return d.optionName.substring(0, 7) + "...";
         } else if (d.optionName.length > 16) {
             return d.optionName.substring(0, 13) + "...";
         } else {
