@@ -63,7 +63,7 @@ function ViewPoll() {
     const handleSubmit = async (e) => {
             e.preventDefault()
 
-            if (!selectedOption) {
+            if (selectedOption === null) {
                 return;
             }
             

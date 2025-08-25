@@ -91,17 +91,18 @@ function PollVoteResult() {
                         </div>
 
                         <div className="row justify-content-center">
-                            <div className="col-md-3">
+                            <div className="col-md-4">
                                 {pollResults.map((option, i) => (
-                                    <h5 
+                                    <h5
+                                    style={{fontSize:"1.2rem"}}
                                     className="pt-3"
                                     key={i}
                                     >
-                                        {i + 1}. {option.optionName} - {option.optionVotes} Votes <span style={{color:color(i % 10), fontSize:"1.6rem"}}>■</span>
+                                        {i + 1}. {option.optionName} - {option.optionVotes} {option.optionVotes === 1 ? "Vote" : "Votes"} <span style={{color:color(i % 10), fontSize:"1.6rem"}}>■</span>
                                     </h5>
                                 ))}
                             </div> 
-                            <div className="col-md-9 mt-3">
+                            <div className="col-md-8 mt-3">
                                 <PieChart
                                     data={pollResults}
                                 />

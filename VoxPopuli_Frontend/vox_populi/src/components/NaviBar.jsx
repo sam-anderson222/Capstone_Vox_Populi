@@ -31,7 +31,11 @@ function NaviBar() {
                                 <NavLink className='nav-link' to="/createPoll">Create</NavLink>
                             </li>
                             <li className='nav-item'>
-                                 <button className='btn btn-link nav-link' onClick={logout}>Log Out</button>
+                                 <button 
+                                 className='btn btn-link nav-link' 
+                                 style={{ border: "0px",  textTransform: "none"}}
+                                 onClick={logout}>Log Out
+                                 </button>
                             </li>
                             <li className='nav-item'>
                                  <span className='nav-link text-light'>{userData.username}</span>

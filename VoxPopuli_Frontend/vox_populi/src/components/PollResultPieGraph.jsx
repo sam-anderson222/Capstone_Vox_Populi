@@ -13,8 +13,10 @@ const PieChart = ({ data, size = 300 }) => {
 
         if (d.optionVotes / totalNumberOfVotes <= 0.10) {
             return "";
+        } else if (d.optionName.length > 16) {
+            return d.optionName.substring(0, 13) + "...";
         } else {
-            return d.optionName;
+          return d.optionName;
         }
   }
 
