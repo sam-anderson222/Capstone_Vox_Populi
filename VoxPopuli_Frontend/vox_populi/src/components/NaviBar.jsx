@@ -33,7 +33,7 @@ function NaviBar() {
                             <li className='nav-item'>
                                  <button 
                                  className='btn btn-link nav-link' 
-                                 style={{ border: "0px",  textTransform: "none"}}
+                                 style={{ border: "0px",  textTransform: "none", padding: "0.5rem 0.6rem"}}
                                  onClick={logout}>Log Out
                                  </button>
                             </li>
