@@ -75,6 +75,17 @@ public class mySqlPollRepo implements PollRepository {
     }
 
     @Override
+    public Integer getNumberOfPolls() {
+        String sql = "SELECT COUNT(*) FROM poll";
+
+        try {
+            return jdbcTemplate.queryForObject(sql, Integer.class);
+        } catch (Exception ex) {
+            throw new DatabaseErrorException();
+        }
+    }
+
+    @Override
     public Optional<Poll> getPollById(Integer pollId) {
         String sql = "SELECT * FROM poll WHERE poll_id = ?";
 
@@ -90,10 +101,11 @@ public class mySqlPollRepo implements PollRepository {
     }
 
     @Override
-    public List<PollOverview> getAllPollOverviews() {
+    public List<PollOverview> getAllPollOverviews(Integer pageNumber) {
         try {
-            return jdbcTemplate.execute("{CALL get_poll_overviews()}",
+            return jdbcTemplate.execute("{CALL get_poll_overviews(?)}",
                     (CallableStatementCallback<List<PollOverview>>) cs -> {
+                        cs.setInt(1, pageNumber);
                         boolean hasResults = cs.execute();
 
                         HashMap<Integer, PollOverview> overviews = new HashMap<>();
@@ -118,7 +130,9 @@ public class mySqlPollRepo implements PollRepository {
                                     Integer pollId = rs.getInt("poll_id");
                                     Integer pollVotes = rs.getInt("votes");
 
-                                    overviews.get(pollId).setVotesOnPoll(pollVotes);
+                                    if (overviews.containsKey(pollId)) {
+                                        overviews.get(pollId).setVotesOnPoll(pollVotes);
+                                    }
                                 }
                             }
                         }

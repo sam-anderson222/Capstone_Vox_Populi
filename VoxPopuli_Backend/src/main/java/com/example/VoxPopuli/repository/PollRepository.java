@@ -9,8 +9,9 @@ import java.util.Optional;
 
 public interface PollRepository {
     List<Poll> getAllPolls();
+    Integer getNumberOfPolls();
     Optional<Poll> getPollById(Integer pollId);
-    List<PollOverview> getAllPollOverviews();
+    List<PollOverview> getAllPollOverviews(Integer pageNumber);
     boolean savePoll(Poll poll);
     boolean deletePollById(Integer pollId);
 }

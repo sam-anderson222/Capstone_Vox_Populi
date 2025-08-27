@@ -1,5 +1,7 @@
 package com.example.VoxPopuli.model;
 
+// Holds the vote results for a single poll option.
+
 public class PollOptionVoteResult {
     private Integer optionNumber;
     private String optionName;

@@ -7,6 +7,7 @@ import com.example.VoxPopuli.repository.PollOptionRepository;
 import com.example.VoxPopuli.repository.PollRepository;
 import com.example.VoxPopuli.repository.UserRepository;
 import com.example.VoxPopuli.repository.mappers.PollOptionMapper;
+import com.example.VoxPopuli.services.PollService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -19,13 +20,7 @@ import java.util.Optional;
 public class VoxPopuliApplication implements CommandLineRunner {
 
 	@Autowired
-	UserRepository userRepo;
-
-	@Autowired
-	PollRepository pollRepo;
-
-	@Autowired
-	PollOptionRepository pollOptionRepo;
+	PollService svc;
 
 	public static void main(String[] args) {
 		SpringApplication.run(VoxPopuliApplication.class, args);
@@ -33,6 +28,6 @@ public class VoxPopuliApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-
+		System.out.println(svc.getAllPollOverviews(1));
 	}
 }

@@ -1,5 +1,8 @@
 package com.example.VoxPopuli.model;
 
+
+// Is a user's poll vote that also include the option name of the vote alongside it for display purposes.
+
 public class PollVoteWithOption {
     private Integer userId;
     private Integer pollId;

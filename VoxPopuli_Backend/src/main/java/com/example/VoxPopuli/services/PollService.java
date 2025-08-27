@@ -22,6 +22,8 @@ public class PollService {
         return pollRepo.getAllPolls();
     }
 
+    public Integer getNumberOfPolls() { return pollRepo.getNumberOfPolls(); }
+
     public Optional<Poll> getPollById(Integer pollId) {
         if (pollId < 1) {
             return Optional.empty();
@@ -30,8 +32,8 @@ public class PollService {
         return pollRepo.getPollById(pollId);
     }
 
-    public List<PollOverview> getAllPollOverviews() {
-        return pollRepo.getAllPollOverviews();
+    public List<PollOverview> getAllPollOverviews(Integer pageNumber) {
+        return pollRepo.getAllPollOverviews(pageNumber);
     }
 
     public boolean savePoll(Poll poll) {

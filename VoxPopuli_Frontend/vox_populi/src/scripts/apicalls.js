@@ -1,8 +1,26 @@
 
 
-export async function getAllPollOverviews() {
+export async function getAllPollOverviews(pageNumber) {
     // call the api
-    const response = await fetch('http://localhost:8080/api/polls/overviews');
+    const response = await fetch('http://localhost:8080/api/polls/overviews', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body:pageNumber
+    });
+
+    if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`)
+    }
+
+    const data = await response.json();
+    return data;
+};
+
+export async function getNumberOfPolls() {
+    // call the api
+    const response = await fetch(`http://localhost:8080/api/polls/number`);
 
     if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`)

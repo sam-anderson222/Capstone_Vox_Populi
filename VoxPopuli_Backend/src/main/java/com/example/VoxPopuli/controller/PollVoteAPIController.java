@@ -1,9 +1,6 @@
 package com.example.VoxPopuli.controller;
 
 import com.example.VoxPopuli.model.*;
-import com.example.VoxPopuli.repository.PollOptionRepository;
-import com.example.VoxPopuli.repository.PollRepository;
-import com.example.VoxPopuli.repository.PollVoteRepository;
 import com.example.VoxPopuli.services.PollVoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,18 +15,18 @@ import java.util.Optional;
 public class PollVoteAPIController {
 
     @Autowired
-    PollVoteService pollVoteRepo;
+    PollVoteService pollVoteService;
 
     @GetMapping("/{id}")
     public ResponseEntity<List<PollOptionVoteResult>> getPollResults(@PathVariable Integer id) {
-        List<PollOptionVoteResult> pollResults = pollVoteRepo.getResultsForPoll(id);
+        List<PollOptionVoteResult> pollResults = pollVoteService.getResultsForPoll(id);
 
         return ResponseEntity.ok(pollResults);
     }
 
     @PostMapping("/hasVoted/{id}")
     public ResponseEntity<PollVoteWithOption> hasUserVotedOnPoll(@PathVariable Integer id, @RequestBody User user) {
-        Optional<PollVoteWithOption> userVote= pollVoteRepo.userVotedOnPoll(user, id);
+        Optional<PollVoteWithOption> userVote= pollVoteService.userVotedOnPoll(user, id);
 
         return userVote.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.status(HttpStatus.NO_CONTENT).build());
     }
@@ -37,7 +34,7 @@ public class PollVoteAPIController {
 
     @PostMapping("/vote")
     public ResponseEntity<Boolean> voteOnPoll(@RequestBody PollVote pollVote) {
-        boolean successfullyVoted = pollVoteRepo.voteOnPoll(pollVote);
+        boolean successfullyVoted = pollVoteService.voteOnPoll(pollVote);
         System.out.println("Attempts to vote: " + pollVote);
 
         if (successfullyVoted) {

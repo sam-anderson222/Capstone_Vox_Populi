@@ -42,7 +42,7 @@ class PollRepoTest {
 
     @Test
     void getAllPollOverviews_returnsAllPollOverviews() {
-        List<PollOverview> polls = pollRepo.getAllPollOverviews();
+        List<PollOverview> polls = pollRepo.getAllPollOverviews(0); // gets all polls on page 1.
         int numberOfPolls = 5;
 
         assertEquals(numberOfPolls, polls.size());
