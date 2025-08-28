@@ -28,6 +28,6 @@ public class VoxPopuliApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		System.out.println(svc.getAllPollOverviews(1));
+
 	}
 }

@@ -130,7 +130,7 @@ function CreatePoll() {
                                 <div className="row mb-5 justify-content-start w-50">
                                     <label className="form-label">Options (2-20): </label>
                                     {pollOptions.map((option, index) => (
-                                        <div key={index} className="d-flex">
+                                        <div key={index} className="d-flex gap-1">
                                             <input
                                                 name='option'
                                                 className="form-control mt-2 mb-2 pt-2 pb-2"
