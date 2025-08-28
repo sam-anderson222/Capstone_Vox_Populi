@@ -8,10 +8,17 @@ DROP PROCEDURE IF EXISTS delete_poll;
 
 DELIMITER //
 
-CREATE PROCEDURE get_poll_overviews()
+CREATE PROCEDURE get_poll_overviews(IN pageNumber INT)
 BEGIN
+	DECLARE offsetValue INT;
+    
+    SET offsetValue = pageNumber * 10;
+
 	SELECT poll_id, poll_author, username, poll_title, poll_description FROM poll
-    INNER JOIN users ON users.user_id = poll.poll_author;
+    INNER JOIN users ON users.user_id = poll.poll_author
+    GROUP BY poll_id
+    LIMIT 10 OFFSET offsetValue;
+    
 	SELECT poll_id, COUNT(*) AS votes FROM poll_votes GROUP BY poll_id;
 END //
 
